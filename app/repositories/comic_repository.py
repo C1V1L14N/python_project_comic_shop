@@ -3,15 +3,15 @@ from db.run_sql import run_sql
 from models.comic import Comic
 from models.publisher import Publisher
 
+import repositories.publisher_repository as publisher_repository
+
 def save(comic):
-    sql = "INSERT INTO comics (name, author, genre, wholesale_price, markup, stock_count, min_count, out_of_stock, publisher)\
-         VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s,) RETURNING id"
-    values = [comic.name, comic.author, comic.genre, comic.wholesale_price,\ 
-    comic.markup, comic.stock_count, comic.min_count, comic.out_of_stock, comic.publisher.id]
-    results = run_sql(sql, values)
-    id = results[0]['id']
-    comic.id = id
-    return comic
+     sql = "INSERT INTO comics (name, author, genre, wholesale_price, markup, stock_count, min_count, out_of_stock, publisher_id) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s) RETURNING id"
+     values = [comic.name, comic.author, comic.genre, comic.wholesale_price, comic.markup, comic.stock_count, comic.min_count, comic.out_of_stock, comic.publisher.id]
+     results = run_sql(sql, values)
+     id = results[0]['id']
+     comic.id = id
+     return comic
 
 def select_all():
      comics = []
@@ -20,7 +20,7 @@ def select_all():
      results = run_sql(sql)
 
      for row in results:
-          comic = Comic(row['name'], row ['author'], row['genre'], row['wholesale_price'], row['markup'], row['stock_count'], row['min_count'], row['out_of_stock'], row['publisher'])
+          comic = Comic(row['name'], row ['author'], row['genre'], row['wholesale_price'], row['markup'], row['stock_count'], row['min_count'], row['out_of_stock'], row['publisher_id'])
           comics.append(comic)
      return comics
 
@@ -63,5 +63,5 @@ def publisher(comic):
 
 
 
-def publisher(comic):
+
 
