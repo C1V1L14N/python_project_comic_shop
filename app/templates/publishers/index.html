@@ -1,0 +1,15 @@
+<h2>Publishers</h2>
+
+{% for publisher in publishers %}
+    <span>
+        <h3>{{ publisher.name }}</h3>
+        <div class="publisher_list">            
+            <p>{{ publisher.name }}</p>            
+        </div>
+        <div class="publisher_headings">
+            <p>Publisher</p>            
+        </div>
+    </span>
+
+    
+{% endfor %}

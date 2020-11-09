@@ -21,7 +21,7 @@ def select_all():
     results = run_sql(sql)
     
     for row in results:
-        publisher = Publisher(row['publisher_id'], row['id'])        
+        publisher = Publisher(row['name'], row['id'])        
         publishers.append(publisher)
     return publishers
 
@@ -63,6 +63,8 @@ def comics(publisher):
     for row in results:
         comic = Comic(row['name'], row ['author'], row['genre'], row['wholesale_price'], row['markup'], row['stock_count'], row['min_count'], row['out_of_stock'], row['publisher'])
         comics.append(publisher)
+
+# def select_by_name():
 
 
 

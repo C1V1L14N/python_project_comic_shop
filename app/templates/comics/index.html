@@ -1,0 +1,32 @@
+
+
+    <h2>Inventory</h2>
+
+    {% for comic in comics %}
+        <span>
+            <h3>{{ comic.name }}</h3>
+            <div class="comic_inv">            
+                <p>{{ comic.author }}</p>
+                <p>{{ comic.genre }}</p>
+                <p>{{ comic.wholsesale_price }}</p>
+                <p>{{ comic.markup }}</p>
+                <p>{{ comic.stock_count }}</p>
+                <p>{{ comic.min_count }}</p>
+                <p>{{ comic.publisher.name }}</p>
+            </div>
+            <div class="comic_headings">
+                <p>Author</p>
+                <p>Genre</p>
+                <p>Wholsesale_price</p>
+                <p>Markup</p>
+                <p>Stock Count</p>
+                <p>Minimum Number</p>
+                <p>Publisher</p>
+            </div>
+        </span>
+
+        {% if comic.stock_count == 0 %}
+            <h4>Out of stock</h4>
+        {% endif %}
+    {% endfor %}
+    

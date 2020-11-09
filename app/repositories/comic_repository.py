@@ -20,7 +20,8 @@ def select_all():
      results = run_sql(sql)
 
      for row in results:
-          comic = Comic(row['name'], row ['author'], row['genre'], row['wholesale_price'], row['markup'], row['stock_count'], row['min_count'], row['out_of_stock'], row['publisher_id'])
+          publisher = publisher_repository.select(row['publisher_id'])
+          comic = Comic(row['name'], row ['author'], row['genre'], row['wholesale_price'], row['markup'], row['stock_count'], row['min_count'], row['out_of_stock'], publisher)
           comics.append(comic)
      return comics
 
@@ -32,7 +33,8 @@ def select():
      result = run_sql(sql, values)
 
      if result is not None:
-          comic = Comic(result['name'], result ['author'], result['genre'], result['wholesale_price'], result['markup'], result['stock_count'], result['min_count'], result['out_of_stock'], result['publisher'])
+          publisher = publisher_repository.select(row['publisher_id'])
+          comic = Comic(result['name'], result ['author'], result['genre'], result['wholesale_price'], result['markup'], result['stock_count'], result['min_count'], result['out_of_stock'], publisher)
           return comic
 
 
@@ -42,7 +44,7 @@ def delete_all():
 
 
 def delete():
-     sql = "DELE  FROM comics WHERE id = %s"
+     sql = "DELETE  FROM comics WHERE id = %s"
      values = id
      run_sql(sql, values)
 

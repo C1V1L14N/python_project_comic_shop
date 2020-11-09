@@ -9,7 +9,7 @@ comic_repository.delete_all()
 publisher_repository.delete_all()
 
 
-publisher1 = Publisher("image")
+publisher1 = Publisher("Image")
 publisher_repository.save(publisher1)
 
 publisher2 = Publisher("Marvel")
