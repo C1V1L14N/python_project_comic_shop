@@ -21,21 +21,21 @@ def select_all():
 
      for row in results:
           publisher = publisher_repository.select(row['publisher_id'])
-          comic = Comic(row['name'], row ['author'], row['genre'], row['wholesale_price'], row['markup'], row['stock_count'], row['min_count'], row['out_of_stock'], publisher)
+          comic = Comic(row['name'], row ['author'], row['genre'], row['wholesale_price'], row['markup'], row['stock_count'], row['min_count'], row['out_of_stock'], publisher, row['id'])
           comics.append(comic)
      return comics
 
 
-def select():
+def select(id):
      comic = None
      sql = "SELECT * FROM comics WHERE id = %s"
      values = [id]
-     result = run_sql(sql, values)
+     result = run_sql(sql, values)[0]
 
      if result is not None:
-          publisher = publisher_repository.select(row['publisher_id'])
-          comic = Comic(result['name'], result ['author'], result['genre'], result['wholesale_price'], result['markup'], result['stock_count'], result['min_count'], result['out_of_stock'], publisher)
-          return comic
+          publisher = publisher_repository.select(result['publisher_id'])
+          comic = Comic(result['name'], result['author'], result['genre'], result['wholesale_price'], result['markup'], result['stock_count'], result['min_count'], result['out_of_stock'], publisher, result['id'])
+     return comic
 
 
 def delete_all():
@@ -54,6 +54,17 @@ def update(comic):
      values = [comic.name, comic.author, comic.genre, comic.wholesale_price, comic.markup, comic.stock_count, comic.min_count, comic.out_of_stock, comic.publisher, comic.id]
      result = run_sql(sql, values)
 
+# def find_single_comic(name):
+#      comic = None
+#      sql = "SELECT comic FROM comics WHERE name = %s"
+#      values = [name]
+#      results = run_sql(sql, values)
+
+#      for row in results:
+#           comic = Comic(results['name'], results['author'], results['genre'], results['wholesale_price'], results['markup'], results['stock_count'], results['min_count'], results['out_of_stock'], results['publisher'])
+#      return comic
+
+
 def publisher(comic):
      sql = "SELECT * FROM comics WHERE publisher_id = %s"
      values = [comic.id]
@@ -62,6 +73,17 @@ def publisher(comic):
      for row in result:
           publisher = Publisher(row['name'], row['id'])
      return publisher
+
+def find_single_comic(name):
+     comic = None
+     sql = "SELECT * FROM comics WHERE name = %s"
+     values = [name]
+     result = run_sql(sql, values)[0]
+
+     if result is not None:
+          publisher = publisher_repository.select(result['publisher_id'])
+          comic = Comic(result['name'], result ['author'], result['genre'], result['wholesale_price'], result['markup'], result['stock_count'], result['min_count'], result['out_of_stock'], publisher, result['id'])
+          return comic
 
 
 

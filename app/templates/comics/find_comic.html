@@ -1,10 +1,10 @@
 
 <h2>Find Comic</h2>
 
-<form action="/comics/find_comic" method='post'>
+<form action="/comics/find_comic_result" method='post'>
     <div>
         <label for="find_by_comic_name">Comic Name</label>
-        <input type="text">
+        <input type="text"id="name" name="name" placeholder = "Search" required autofocus>
     </div>
 
     <div>
@@ -12,6 +12,10 @@
         <input type="text">
     </div>
 
-    <input type="button" value="submit">
+    <button type="submit">FIND</button>
 
 </form>
+
+    <div>
+        <a href="/">BACK</a>
+    </div>

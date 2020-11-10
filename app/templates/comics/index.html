@@ -13,6 +13,10 @@
                 <p>{{ comic.stock_count }}</p>
                 <p>{{ comic.min_count }}</p>
                 <p>{{ comic.publisher.name }}</p>
+                <p>{{ comic.id }}</p>
+
+                    <a href="/comics/{{comic.id}}/edit_comic">Update</a>
+
             </div>
             <div class="comic_headings">
                 <p>Author</p>
@@ -29,4 +33,8 @@
             <h4>Out of stock</h4>
         {% endif %}
     {% endfor %}
+
+    <div>
+        <a href="/">BACK</a>
+    </div>
     
