@@ -1,4 +1,10 @@
+{% extends 'base.html' %}
 
+{% block content %}
+
+
+{% for comic in comics %}
+    
 <h2>{{ comic.name }}</h2>
 
     <div>
@@ -11,4 +17,17 @@
         <p>{{comic.out_of_stock}}</p>
         <p>{{comic.publisher.name}}</p>
         <p>{{ comic.id }}</p>
+
+        <form action="/comics/{{comic.id}}/edit_comic" method="get">
+            <input type="submit" value="Update">
+        </form>
+        
+        <form action="/comics/{{ comic.id }}/delete" method="post">
+            <input type="submit" value="Delete">
+        </form>
+
     </div>
+
+{% endfor %}
+
+{% endblock content %}

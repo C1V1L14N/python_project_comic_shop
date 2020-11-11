@@ -1,7 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
 
 <h2>Edit Comic</h2>
 
-<form action="/comics" method='post'>
+<form action="/comics/{{ comic.id }}" method='post'>
     <div>
         <label for="name">Name</label>
         <input type="text" id="name" name="name" value="{{comic.name}}" required autofocus>
@@ -61,3 +65,5 @@
 
 
 </form>
+
+{% endblock content %}

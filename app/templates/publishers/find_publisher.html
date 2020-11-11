@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<h2>Find Publisher</h2>
+
+<section id="find_publisher">
+    <form action="/publishers/find_publisher_result" method="post">
+        <label for="publisher">Publisher</label>
+        <input type="text" name="publisher" id="publisher" placeholder="Search">
+        <button type="submit">Find</button>
+    </form>
+</section>
+
+{% endblock content %}

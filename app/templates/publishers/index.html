@@ -1,15 +1,33 @@
-<h2>Publishers</h2>
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>All Publishers</h2>
 
 {% for publisher in publishers %}
-    <span>
-        <h3>{{ publisher.name }}</h3>
+    <section id="all_publishers">        
         <div class="publisher_list">            
             <p>{{ publisher.name }}</p>            
         </div>
         <div class="publisher_headings">
             <p>Publisher</p>            
         </div>
-    </span>
+
+        <div class="publisher_headings">
+            <p>Name</p>
+        </div>
+
+        <form action="/publishers/{{publisher.id}}/edit_publisher" method="get">
+            <input type="submit" value="Update">
+        </form>
+        
+        <form action="/publishers/{{ publisher.id }}/delete" method="post">
+            <input type="submit" value="Delete">
+        </form>
+
+    </section>
 
     
 {% endfor %}
+
+{% endblock content %}

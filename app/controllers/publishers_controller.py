@@ -8,3 +8,38 @@ publishers_blueprint = Blueprint("publishers", __name__)
 def show_all():
     publishers = publisher_repository.select_all()
     return render_template('publishers/index.html', publishers = publishers)
+
+@publishers_blueprint.route('/publishers/add_publisher')
+def publisher_form():
+    publisher = publisher_repository.select_all()
+    return render_template('publishers/add_publisher.html', publisher = publisher)
+
+@publishers_blueprint.route('/publishers', methods=['POST'])
+def add_publisher():
+    name = request.form['name']
+    publisher = Publisher(name)
+    
+    publisher_repository.save(publisher)
+    return redirect('/publishers/add_publisher')
+
+
+@publishers_blueprint.route("/publishers/<id>/delete", methods=['POST'])
+def delete(id):
+    publisher_repository.delete(id)
+    return redirect('/publishers')
+
+
+@publishers_blueprint.route('/publishers/find_publisher')
+def find_publisher():
+    return render_template('/publishers/find_publisher.html')
+
+
+
+
+@publishers_blueprint.route("/publishers/find_publisher_result", methods=['post'])
+def publisher_by_name():
+    name = request.form['publisher']
+    publisher = publisher_repository.find_single_publisher(name)
+    print(publisher)
+    return render_template('publishers/find_publisher_result.html', publisher = publisher)
+

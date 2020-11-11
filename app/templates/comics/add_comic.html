@@ -1,57 +1,65 @@
+{% extends 'base.html' %}
 
-<h2>Add Comic</h2>
+{% block content %}
 
-<form action="/comics" method="post">
-    <div>
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" placeholder = "Name" required autofocus>
-    </div>
-    <div>
-        <label for="author">Author</label>
-        <input type="text" id="author" name="author" placeholder = "Author">
-    </div>
-    <div>
-        <label for="genre">Genre</label>
-        <input type="text" id="genre" name="genre" placeholder = "Genre">
-    </div>
-    <div>
-        <label for="wholesale_price">Wholesale Price</label>
-        <input type="number" id="wholesale_price" name="wholesale_price">
-    </div>
-    <div>
-        <label for="markup">Markup</label>
-        <input type="number" id="markup" name="markup">
-    </div>
-    <div>
-        <label for="stock_count">Stock_count</label>
-        <input type="number" id="stock_count" name="stock_count">
-    </div>
-    <div>
-        <label for="min_count">Min Count</label>
-        <input type="number" id="min_count" name="min_count">
-    </div>
-    <div>
-        <label for="out_of_stock">Out of Stock</label>
-        <select name="out_of_stock" id="out_of_stock">
-            <option value="true">True</option>
-            <option value="false">False</option>
-        </select>
-    </div>
-    <div>
-        <label for="publisher_id">Publisher</label>
-        <select name="publisher_id" id="publisher_id">
-            <option value="holder" hidden selected disabled>Choose Publisher</option>
-            {% for publisher in publishers %}
-                <option value="{{publisher.id}}">{{publisher.name}}</option>
-            {% endfor %}
-        </select>
-    </div>
-    <div>
-        <button type="submit">SAVE COMIC</button>
-    </div>
+<h2 id="add_comic_id">Add Comic</h2>
+
+<section id="add_comic">
     
-    <div>
-        <a href="/">BACK</a>
-    </div>
-    
-</form>
+
+    <form action="/comics" method="post">
+        <div>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder = "Name" required autofocus>
+        </div>
+        <div>
+            <label for="author">Author</label>
+            <input type="text" id="author" name="author" placeholder = "Author">
+        </div>
+        <div>
+            <label for="genre">Genre</label>
+            <input type="text" id="genre" name="genre" placeholder = "Genre">
+        </div>
+        <div>
+            <label for="wholesale_price">Wholesale Price</label>
+            <input type="number" id="wholesale_price" name="wholesale_price">
+        </div>
+        <div>
+            <label for="markup">Markup</label>
+            <input type="number" id="markup" name="markup">
+        </div>
+        <div>
+            <label for="stock_count">Stock_count</label>
+            <input type="number" id="stock_count" name="stock_count">
+        </div>
+        <div>
+            <label for="min_count">Min Count</label>
+            <input type="number" id="min_count" name="min_count">
+        </div>
+        <div>
+            <label for="out_of_stock">Out of Stock</label>
+            <select name="out_of_stock" id="out_of_stock">
+                <option value="true">True</option>
+                <option value="false">False</option>
+            </select>
+        </div>
+        <div>
+            <label for="publisher_id">Publisher</label>
+            <select name="publisher_id" id="publisher_id">
+                <option value="holder" hidden selected disabled>Choose Publisher</option>
+                {% for publisher in publishers %}
+                    <option value="{{publisher.id}}">{{publisher.name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <button type="submit">SAVE COMIC</button>
+        </div>
+        
+        
+        
+    </form>
+
+</section>
+
+{% endblock content %}

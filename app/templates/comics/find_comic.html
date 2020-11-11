@@ -1,21 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
 
 <h2>Find Comic</h2>
 
-<form action="/comics/find_comic_result" method='post'>
-    <div>
-        <label for="find_by_comic_name">Comic Name</label>
-        <input type="text"id="name" name="name" placeholder = "Search" required autofocus>
-    </div>
+<section id="find_comic">
+    <form action="/comics/by_name/find_comic_result" method='post'>
+        <div>
+            <label for="find_by_comic_name">Comic Name</label>
+            <span><input type="text"id="name" name="name" placeholder = "Search" autofocus><button type="submit">FIND</button></span>
+        </div>
+        
+    </form>
 
-    <div>
-        <label for="find_by_comic_publisher">Publisher Name</label>
-        <input type="text">
-    </div>
+    <form action="/comics/by_publisher/find_comic_result" method="post">
+        <div>
+            <label for="find_by_comic_publisher">Publisher Name</label>
+            <span><input type="text"id="publisher" name="publisher" placeholder = "Search"><button type="submit">FIND</button></span>
+        </div>
+        
+    </form>
+</section>    
 
-    <button type="submit">FIND</button>
-
-</form>
-
-    <div>
-        <a href="/">BACK</a>
-    </div>
+    {% endblock content %}

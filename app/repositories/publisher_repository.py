@@ -64,7 +64,15 @@ def comics(publisher):
         comic = Comic(row['name'], row ['author'], row['genre'], row['wholesale_price'], row['markup'], row['stock_count'], row['min_count'], row['out_of_stock'], row['publisher'])
         comics.append(publisher)
 
-# def select_by_name():
+def find_single_publisher(name):
+    publisher = None
+    sql = "SELECT * FROM publishers WHERE name = %s"
+    values = [name]
+    result = run_sql(sql, values)[0]
+
+    if result is not None:
+        publisher = Publisher(result['name'], result['id'])
+        return publisher
 
 
 

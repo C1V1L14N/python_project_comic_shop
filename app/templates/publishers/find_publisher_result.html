@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    
+        
+    
+
+        <div>
+            <p>{{publisher.name}}</p>
+            
+        </div>
+        <div>
+            <form action="/publishers/{{publisher.id}}/edit_publisher" method="get">
+                <input type="submit" value="Update">
+            </form>
+            
+            <form action="/publishers/{{ publisher.id }}/delete" method="post">
+                <input type="submit" value="Delete">
+            </form>
+        </div>
+
+        {% endblock content %}

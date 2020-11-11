@@ -1,0 +1,77 @@
+h1{
+    margin-top: 0;
+    padding-top: 50px;
+    color: rgb(87, 0, 0);
+    
+    
+}
+
+header{
+    background-image: linear-gradient(black, transparent) ;
+    border: 0px;
+    margin: 0px;
+    height: 150px;
+}
+
+nav a{
+    display: inline;
+    text-align: center;
+    padding: 14px 16px;
+    color: black;
+}
+
+body{
+    margin: 0px;
+    border: 0px;
+    color: blue;
+}
+
+h2{
+    color: black;
+}
+
+#add_comic{
+    color: black;
+    display: flex;
+    margin: 30px;
+}
+
+#add_comic > form > div{
+    padding: 2px;
+}
+
+#find_comic > form > div{
+    color: black;
+    display: flex;
+    margin: 30px;
+}
+
+#inventory{
+    color: black;
+    margin: 20px;
+    display: flex;
+    flex-flow: column;
+    justify-content: left;
+}
+
+#find_publisher > form > label{
+    color: black;
+}
+
+#add_publisher > form > div > label{
+    color: black;
+}
+
+#all_publishers > div{
+    color: black;
+}
+
+#inventory{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+}
+
+#inventory > h3{    
+    margin-right: 50px;
+}
