@@ -43,3 +43,15 @@ def publisher_by_name():
     print(publisher)
     return render_template('publishers/find_publisher_result.html', publisher = publisher)
 
+
+@publishers_blueprint.route('/publishers/<id>/edit_publisher')
+def edit_form(id):
+    publisher = publisher_repository.select(id)
+    return render_template('publishers/edit_publisher.html', publisher = publisher)
+
+@publishers_blueprint.route('/publishers/<id>', methods=["POST"])
+def update_publisher(id):
+    name = request.form['edit_publisher']
+    publisher = Publisher(name)
+    publisher_repository.update(publisher)
+    return redirect('/publishers')

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Edit Publisher</h2>
+
+<form action="/publishers/{{ publisher.id }}" method='post'>
+    <div>
+        <label for="edit_publisher">Name</label>
+        <span><input type="text" id="edit_publisher" name="edit_publisher" value="{{publisher.name}}" autofocus><button type="submit">Update</button></span>
+    </div>
+
+</form>
+
+{% endblock content %}
